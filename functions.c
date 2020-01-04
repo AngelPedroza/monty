@@ -51,7 +51,6 @@ void pop(stack_t **stack, unsigned int line_number)
 	*stack = (*stack)->next;
 	free(tmp);
 }
-
 /**
  * swap - swap the first two elements in the list
  * @stack: Addres of first element in stack
