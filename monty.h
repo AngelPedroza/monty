@@ -48,10 +48,13 @@ typedef struct var_global
 } global_t;
 extern global_t header;
 
+/* Main functions */
 void start_stack(stack_t **stack);
 void function_select(stack_t **stack, unsigned int line_number, char *command);
 void find_file(char *path, stack_t **stack);
 int manage_error(char *value, unsigned int line_number);
+
+/* Command functions */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
@@ -64,6 +67,9 @@ void pchar(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
+
 void free_all(void);
 
 #endif

@@ -9,18 +9,12 @@
 void function_select(stack_t **stack, unsigned int line_number, char *command)
 {
 	instruction_t functions[] = {
-		{"pint", pint},
-		{"pall", pall},
-		{"push", push},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", _mul},
-		{"mod", _mod},
-		{"pchar", pchar},
+		{"pint", pint}, {"pall", pall}, {"push", push},
+		{"pop", pop}, {"swap", swap}, {"add", add},
+		{"nop", nop}, {"sub", sub}, {"div", _div},
+		{"mul", _mul}, {"mod", _mod}, {"pchar", pchar},
+		/* {"pstr", pstr}, */
+		{"rotl", _rotl}, {"rotr", _rotr},
 		{NULL, NULL}
 	};
 	int j;
@@ -67,7 +61,6 @@ void find_file(char *path, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 	header.file = file;
-	atexit(free_all);
 	while (getline(&buffer, &n, file) != -1)
 	{
 		header.buffer = buffer;
@@ -76,6 +69,7 @@ void find_file(char *path, stack_t **stack)
 			function_select(stack, line_number, command);
 		line_number++;
 	}
+	atexit(free_all);
 	/* free(buffer); */
 	/* fclose(file); */
 	exit(EXIT_SUCCESS);
