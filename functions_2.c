@@ -34,7 +34,7 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
-	int res, i;
+	int res;
 	stack_t *tmp = *stack;
 
 	if (!stack || !*stack || !(*stack)->next)
