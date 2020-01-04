@@ -43,6 +43,8 @@ typedef struct instruction_s
 typedef struct var_global
 {
 	stack_t **first;
+	char *buffer;
+	FILE *file;
 } global_t;
 extern global_t header;
 

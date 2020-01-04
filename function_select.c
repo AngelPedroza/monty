@@ -66,15 +66,17 @@ void find_file(char *path, stack_t **stack)
 		fprintf(stderr, "Error: Can't open file %s\n", path);
 		exit(EXIT_FAILURE);
 	}
+	header.file = file;
 	atexit(free_all);
 	while (getline(&buffer, &n, file) != -1)
 	{
+		header.buffer = buffer;
 		command = strtok(buffer, " \n\t\r");
 		if (command)
 			function_select(stack, line_number, command);
 		line_number++;
 	}
-	free(buffer);
-	fclose(file);
+	/* free(buffer); */
+	/* fclose(file); */
 	exit(EXIT_SUCCESS);
 }
