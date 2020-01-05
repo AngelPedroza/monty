@@ -58,6 +58,9 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	stack_t *tmp1;
 	stack_t *tmp2;
 
+	if (!stack || !(*stack) || !(*stack)->next)
+		return;
+
 	(void)line_number;
 	tmp1 = *stack;
 	tmp2 = (*stack)->next;
@@ -81,6 +84,9 @@ void _rotl(stack_t **stack, unsigned int line_number)
 void _rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *current;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return;
 
 	(void)line_number;
 	tmp = NULL;
