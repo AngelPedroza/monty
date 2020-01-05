@@ -63,17 +63,14 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
-	int res, i;
+	int res;
 	stack_t *tmp = *stack;
 
-	for (i = 0; tmp != NULL; i++)
-		tmp = tmp->next;
-	if (i < 2 || *stack == NULL)
+	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
 	tmp = (*stack)->next;
 	res = (*stack)->n * tmp->n;
 	free(*stack);
