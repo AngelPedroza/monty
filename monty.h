@@ -38,8 +38,9 @@ typedef struct instruction_s
 /**
  * struct var_global - structure with the first addres of elements
  * @first: Pointer to stack
+ * @buffer: The buffer
+ * @file: The file descriptor of fopen.
  */
-
 typedef struct var_global
 {
 	stack_t **first;

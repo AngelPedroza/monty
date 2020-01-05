@@ -96,7 +96,7 @@ void _rotr(stack_t **stack, unsigned int line_number)
 	while (final->next != NULL)
 		final = final->next;
 
-        b_final = final->prev;
+	b_final = final->prev;
 	b_final->next = final->next;
 
 	final->next = tmp;
