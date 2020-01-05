@@ -77,7 +77,6 @@ void _mul(stack_t **stack, unsigned int line_number)
 	*stack = tmp;
 	(*stack)->n = res;
 }
-
 /**
  * _mod - get the module of the top by the second top.
  * @stack: Head of the double linked list.
@@ -86,12 +85,14 @@ void _mul(stack_t **stack, unsigned int line_number)
  */
 void _mod(stack_t **stack, unsigned int line_number)
 {
-	int res;
+	int res, i;
 	stack_t *tmp = *stack;
 
-	if (!stack || !*stack || !(*stack)->next)
+	for (i = 0; tmp != NULL; i++)
+		tmp = tmp->next;
+	if (i < 2 || *stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
@@ -101,7 +102,7 @@ void _mod(stack_t **stack, unsigned int line_number)
 	}
 
 	tmp = (*stack)->next;
-	res = tmp->n % (*stack)->n;
+	res = (*stack)->n % tmp->n;
 	free(*stack);
 	*stack = tmp;
 	(*stack)->n = res;
