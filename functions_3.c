@@ -68,11 +68,11 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	while (tmp1->next != NULL)
 		tmp1 = tmp1->next;
 
-	tmp1->next = *stack;
 	(*stack)->prev = tmp1;
-	(*stack)->next = NULL;
-	*stack = tmp2;
-	(*stack)->prev = NULL;
+	(*stack)->next = tmp1->next;
+	tmp1->next = (*stack);
+	(*stack) = tmp2;
+	tmp2->prev = NULL;
 }
 
 /**
