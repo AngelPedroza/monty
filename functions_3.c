@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		free(new_node);
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	value = strtok(NULL, " \n\t\r");
