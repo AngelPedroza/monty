@@ -81,15 +81,14 @@ void add(stack_t **stack, unsigned int line_number)
 	int sum;
 	stack_t *tmp;
 
-	if (!(*stack)->next)
+	if (!(*stack)->next || !(*stack))
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	(void)line_number;
 	tmp = (*stack)->next;
 	sum = (*stack)->n + tmp->n;
+	free(*stack);
 	(*stack) = tmp;
 	(*stack)->n = sum;
-	free(tmp);
 }
