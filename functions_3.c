@@ -63,16 +63,17 @@ void _rotl(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	tmp1 = *stack;
-	tmp2 = (*stack)->next;
+	tmp2 = *stack;
 
 	while (tmp1->next != NULL)
 		tmp1 = tmp1->next;
 
-	(*stack)->prev = tmp1;
-	(*stack)->next = tmp1->next;
-	tmp1->next = (*stack);
-	(*stack) = tmp2;
-	tmp2->prev = NULL;
+	*stack = tmp2->next;
+	(*stack)->prev = tmp2->prev;
+
+	tmp2->next = tmp1->next;
+	tmp1->next = tmp2;
+	tmp2->prev = tmp1;
 }
 
 /**
@@ -83,22 +84,24 @@ void _rotl(stack_t **stack, unsigned int line_number)
  */
 void _rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp, *current;
+	stack_t *tmp, *final, *b_final;
 
 	if (!stack || !(*stack) || !(*stack)->next)
 		return;
 
 	(void)line_number;
-	tmp = NULL;
-	current = *stack;
+	tmp = *stack;
+	final = *stack;
 
-	while (current != NULL)
-	{
-		tmp = current->prev;
-		current->prev = current->next;
-		current->next = tmp;
-		current = current->prev;
-	}
-	if (tmp != NULL)
-		*stack = tmp->prev;
+	while (final->next != NULL)
+		final = final->next;
+
+        b_final = final->prev;
+	b_final->next = final->next;
+
+	final->next = tmp;
+	final->prev = tmp->prev;
+	tmp->prev = final;
+
+	*stack = final;
 }
