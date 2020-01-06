@@ -7,11 +7,13 @@
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = (*stack);
+
 	(void)line_number;
+	if (!stack || !(*stack))
+		goto exi;
+
 	while (tmp)
 	{
-		if (!stack || !(*stack))
-			goto exi;
 		if (tmp->n == 0)
 			goto exi;
 		if (tmp->n < 32 || tmp->n > 126)
