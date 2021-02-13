@@ -27,22 +27,8 @@ What you should learn from this project:
 ### [3. swap](./1003-mul.bf)
 * Implement the swap opcode.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 ## Author
 * **Angel Pedroza** - [AngelPedroza](https://github.com/AngelPedroza)
+* **Cristian Hurtado** - [Cristian Hurtado](https://github.com/cristian0497)
